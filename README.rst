@@ -16,20 +16,20 @@ Then it is a matter of cake to start using the service::
     >>> client = OpenExchangeRatesClient('<YOUR_API_KEY>')
     >>> client.currencies()
     {'AED': 'United Arab Emirates Dirham',
-    'AFN': u'Afghan Afghani',
-    'ALL': u'Albanian Lek',
-    'AMD': u'Armenian Dram',
-    'ANG': u'Netherlands Antillean Guilder',
-    'AOA': u'Angolan Kwanza',
-    'ARS': u'Argentine Peso',
-    'AUD': u'Australian Dollar',
+    'AFN': 'Afghan Afghani',
+    'ALL': 'Albanian Lek',
+    'AMD': 'Armenian Dram',
+    'ANG': 'Netherlands Antillean Guilder',
+    'AOA': 'Angolan Kwanza',
+    'ARS': 'Argentine Peso',
+    'AUD': 'Australian Dollar',
     ...
 
     >>> client.latest()
-    {'base': u'USD',
-    'disclaimer': u'<disclaimer>',
-    'license': u'<license>',
-    'rates': {u'AED': 3.672701,
+    {'base': 'USD',
+    'disclaimer': '<disclaimer>',
+    'license': '<license>',
+    'rates': {'AED': 3.672701,
         'AFN': 51.621833,
         'ALL': 104.032,
         'AMD': 406.489997,
@@ -42,10 +42,10 @@ Then it is a matter of cake to start using the service::
 You are also free to select base currency (Supported by non-free licenses)::
 
     >>> client.latest(base='GBP')
-    {'base': u'GBP',
-    'disclaimer': u'<disclaimer>',
-    'license': u'<license>',
-    'rates': {u'AED': 3.672701,
+    {'base': 'GBP',
+    'disclaimer': '<disclaimer>',
+    'license': '<license>',
+    'rates': {'AED': 3.672701,
         'AFN': 51.621833,
         'ALL': 104.032,
         'AMD': 406.489997,
