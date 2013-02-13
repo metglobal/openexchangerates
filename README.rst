@@ -5,6 +5,14 @@ openexchangerates
 This is a simple python client implementation of http://openexhangerates.org
 web services.
 
+Install
+-------
+
+openexchangerates is avaiable on pypi repositories. Just simply install
+by using ``easy_install`` or ``pip``::
+
+    $ pip install openexchangerates
+
 Usage
 -----
 
