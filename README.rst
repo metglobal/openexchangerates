@@ -2,12 +2,13 @@
 openexchangerates
 =================
 
-This is a simple python client implementation og openexhangerates.org services.
+This is a simple python client implementation of http://openexhangerates.org
+web services.
 
 Usage
 -----
 
-First of all, you have to obtain an API key by visiting
+First of all, you have to sign up the service for an API key by visiting
 https://openexchangerates.org
 
 Then it is a matter of cake to start using the service::
