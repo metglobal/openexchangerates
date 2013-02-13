@@ -2,8 +2,8 @@ from setuptools import setup
 
 setup(
     name='openexchangerates',
-    py_modules=['openexchangerates'],
-    version='0.0.1',
+    packages=['openexchangerates'],
+    version='0.0.2',
     description='openexchangerates.org python API client',
     author='Metglobal',
     author_email='kadir.pekel@metglobal.com',
