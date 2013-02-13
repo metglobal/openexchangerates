@@ -2,7 +2,7 @@
 openexchangerates
 =================
 
-This is a simple python client implementation of http://openexhangerates.org
+This is a simple python client implementation of https://openexchangerates.org
 web services.
 
 Install
