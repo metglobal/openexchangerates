@@ -21,7 +21,7 @@ https://openexchangerates.org
 
 Then it is a matter of cake to start using the service::
 
-    >>> from openexchangerate import OpenExchageRatesClient
+    >>> from openexchangerates import OpenExchangeRatesClient
     >>> client = OpenExchangeRatesClient('<YOUR_API_KEY>')
     >>> client.currencies()
     {'AED': 'United Arab Emirates Dirham',
