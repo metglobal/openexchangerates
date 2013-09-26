@@ -1,5 +1,10 @@
 import requests
 
+__version__ = '0.0.2'
+__author__ = 'Metglobal'
+__license__ = 'MIT'
+__copyright__ = 'Copyright 2013 Metglobal'
+
 
 class OpenExchangeRatesClientException(requests.exceptions.RequestException):
     """Base client exception wraps all kinds of ``requests`` lib exceptions"""
