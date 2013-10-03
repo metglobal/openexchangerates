@@ -1,15 +1,13 @@
 from setuptools import setup
 
-import openexchangerates
-
 setup(
     name='openexchangerates',
-    version=openexchangerates.__version__,
+    version='0.0.4',
     description='openexchangerates.org python API client',
     long_description=open('README.rst').read(),
     url='https://github.com/metglobal/openexchangerates',
-    license=openexchangerates.__license__,
-    author=openexchangerates.__author__,
+    license='MIT',
+    author='Metglobal',
     author_email='kadir.pekel@metglobal.com',
     packages=['openexchangerates'],
     install_requires=[
