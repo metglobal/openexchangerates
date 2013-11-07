@@ -1,4 +1,6 @@
 import unittest
+from decimal import Decimal
+
 from httpretty import HTTPretty, httprettified
 
 import openexchangerates
@@ -49,11 +51,11 @@ class TestOpenExchangeRates(unittest.TestCase):
         rates = latest['rates']
         self.assertEqual(len(rates), 3)
         self.assertIn('AED', rates)
-        self.assertEqual(rates['AED'], 3.666311)
+        self.assertEqual(rates['AED'], Decimal('3.666311'))
         self.assertIn('AFN', rates)
-        self.assertEqual(rates['AFN'], 51.2281)
+        self.assertEqual(rates['AFN'], Decimal('51.2281'))
         self.assertIn('ALL', rates)
-        self.assertEqual(rates['ALL'], 104.748751)
+        self.assertEqual(rates['ALL'], Decimal('104.748751'))
 
     @httprettified
     def test_exception(self):

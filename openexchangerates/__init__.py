@@ -1,3 +1,5 @@
+import decimal
+
 import requests
 
 __version__ = '0.0.4'
@@ -48,7 +50,8 @@ class OpenExchangeRatesClient(object):
             resp.raise_for_status()
         except requests.exceptions.RequestException, e:
             raise OpenExchangeRatesClientException(e)
-        return resp.json()
+        return resp.json(parse_int=decimal.Decimal,
+                         parse_float=decimal.Decimal)
 
     def currencies(self):
         """Fetches current currency data of the service
