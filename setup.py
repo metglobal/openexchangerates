@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='openexchangerates',
-    version='0.1.0',
+    version='0.1.1',
     description='openexchangerates.org python API client',
     long_description=open('README.rst').read(),
     url='https://github.com/metglobal/openexchangerates',
