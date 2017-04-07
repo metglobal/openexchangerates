@@ -1,4 +1,5 @@
 import decimal
+import six
 
 import requests
 
@@ -27,7 +28,27 @@ class OpenExchangeRatesClient(object):
         self.client = requests.Session()
         self.client.params.update({'app_id': api_key})
 
-    def latest(self, base='USD'):
+    def _parsed_response(self, response, local_base=None):
+        data = response.json(parse_int=decimal.Decimal,
+                             parse_float=decimal.Decimal)
+
+        if local_base:
+            return self._local_conversion(data, local_base)
+        else:
+            return data
+
+    def _local_conversion(self, data, base):
+        """Change base using local conversion, only useful for the free plan
+        """
+        data['base'] = base
+        new_rates = {}
+        for curr, value in six.iteritems(data['rates']):
+            new_rates[curr] = round(value / data['rates'][base], 8)
+
+        data['rates'] = new_rates
+        return data
+
+    def latest(self, base='USD', local_base=None):
         """Fetches latest exchange rate data from service
 
         :Example Data:
@@ -49,10 +70,9 @@ class OpenExchangeRatesClient(object):
         try:
             resp = self.client.get(self.ENDPOINT_LATEST, params={'base': base})
             resp.raise_for_status()
-        except requests.exceptions.RequestException, e:
+        except requests.exceptions.RequestException as e:
             raise OpenExchangeRatesClientException(e)
-        return resp.json(parse_int=decimal.Decimal,
-                         parse_float=decimal.Decimal)
+        return self._parsed_response(resp, local_base)
 
     def currencies(self):
         """Fetches current currency data of the service
@@ -75,12 +95,12 @@ class OpenExchangeRatesClient(object):
         """
         try:
             resp = self.client.get(self.ENDPOINT_CURRENCIES)
-        except requests.exceptions.RequestException, e:
+        except requests.exceptions.RequestException as e:
             raise OpenExchangeRatesClientException(e)
 
         return resp.json()
 
-    def historical(self, date, base='USD'):
+    def historical(self, date, base='USD', local_base=None):
         """Fetches historical exchange rate data from service
 
         :Example Data:
@@ -104,7 +124,7 @@ class OpenExchangeRatesClient(object):
                                    date.strftime("%Y-%m-%d"),
                                    params={'base': base})
             resp.raise_for_status()
-        except requests.exceptions.RequestException, e:
+        except requests.exceptions.RequestException as e:
             raise OpenExchangeRatesClientException(e)
-        return resp.json(parse_int=decimal.Decimal,
-                         parse_float=decimal.Decimal)
+        return self._parsed_response(resp, local_base)
+
